@@ -377,5 +377,19 @@ const pizzas = [
 ];
 
 export default function Home() {
-  return <section>home</section>;
+  return (
+    <section className='overflow-hidden'>
+      <div className="container mx-auto">
+        {/* pizza grid */}
+        <div className='grid grid-cols-2 gap-[15px] md:grid-cols-3 xl:grid-cols-4
+        xl:gap-[1.8rem] py-12'>
+          {
+            pizzas.map((pizza) => (
+              <Pizza key={pizza.id} pizza={pizza} />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  )
 }
