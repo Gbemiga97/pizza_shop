@@ -24,6 +24,8 @@ const PizzaDetails = ({modal, setModal, pizza}) => {
   //price state
   const [price, setPrice] = useState(0)
 
+
+
   //set the price based on the pizza size
   useEffect(() => {
     size === 'small' ? setPrice(parseFloat(priceSm + additionalToppingPrice).toFixed(2)) :
@@ -92,13 +94,19 @@ const PizzaDetails = ({modal, setModal, pizza}) => {
             <CrustSelection crust={crust} setCrust={setCrust} />
 
             {/* toppings */}
-            <div>Choose toppings</div>
+            <h4 className="mb-4 text-xl font-semibold">
+              Choose toppings</h4>
 
             {/* topping list */}
-            <div>
+            <div className="flex flex-1 flex-wrap gap-2 py-1 justify-center lg:justify-start">
               {
                 toppings?.map((topping, i) => (
-                  <Topping key={i} topping={topping} />
+                  <Topping
+                   key={i} 
+                   topping={topping} 
+                   additionalTopping={additionalTopping}
+                   setAdditionalTopping={setAdditionalTopping}
+                   />
                 ))
               }
             </div>

@@ -56,8 +56,13 @@ const closeModal = () => {
       </div>
 
       {/* description */}
-      <p className='text-sm font-medium min-h-[60px] mb-6'>
+      {/* shows -> (lg) hidden -> (md)  */}
+      <p className='hidden lg:flex text-sm font-medium min-h-[60px] mb-6'>
         {description}
+      </p>
+       {/* shows -> (md) hidden -> (lg)  */}
+       <p className='lg:hidden text-sm font-medium min-h-[60px] mb-4'>
+        {description.slice(0, 60)}...
       </p>
 
       {/* price & btn */}
