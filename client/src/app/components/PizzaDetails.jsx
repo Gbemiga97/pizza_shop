@@ -3,11 +3,15 @@ import Topping from "./Topping";
 import CrustSelection from "./CrustSelection";
 import SizeSelection from "./SizeSelection";
 import { useEffect, useState } from "react";
+import { useCartContext } from "../context/CartContext";
 
 
 const PizzaDetails = ({modal, setModal, pizza}) => {
 
-  const {priceSm, priceMd, priceLg, image, name, toppings} = pizza
+  const {addToCart} = useCartContext()
+
+
+  const {id, priceSm, priceMd, priceLg, image, name, toppings} = pizza
 
   //pizza size state
   const [size, setSize] = useState('small')
@@ -114,7 +118,9 @@ const PizzaDetails = ({modal, setModal, pizza}) => {
         </div>
          {/* add to cart btn */}
          <div className='h-full flex items-center px-2 lg:items-end'>
-          <button className='btn btn-lg gradient w-full flex justify-center gap-x-2'>
+          <button
+          onClick={() => addToCart(id, image, name, price, additionalTopping, size, crust)}
+          className='btn btn-lg gradient w-full flex justify-center gap-x-2'>
             <div>
             Add to cart for
             </div>

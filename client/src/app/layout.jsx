@@ -1,4 +1,8 @@
 // css
+import CartMobile from './components/CartMobile';
+import CartMobileIcon from './components/CartMobileIcon';
+import Nav from './components/Nav';
+import CartContextProvider from './context/CartContext';
 import './globals.css';
 
 //import next fonts
@@ -26,9 +30,15 @@ const robotoCondensed = Roboto_Condensed({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en'>
+    <CartContextProvider>
+      <html lang='en'>
       <body className={`${quicksand.variable} ${bangers.variable} ${robotoCondensed.variable} font-quicksand`}>
-        {children}</body>
+        <Nav />
+        <CartMobileIcon />
+        <CartMobile />
+        {children}
+        </body>
     </html>
+    </CartContextProvider>
   );
 }
