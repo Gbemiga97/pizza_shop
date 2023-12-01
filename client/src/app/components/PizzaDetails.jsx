@@ -119,7 +119,10 @@ const PizzaDetails = ({modal, setModal, pizza}) => {
          {/* add to cart btn */}
          <div className='h-full flex items-center px-2 lg:items-end'>
           <button
-          onClick={() => addToCart(id, image, name, price, additionalTopping, size, crust)}
+          onClick={() => {
+            addToCart(id, image, name, price, additionalTopping, size, crust)
+            setModal(false)
+          }}
           className='btn btn-lg gradient w-full flex justify-center gap-x-2'>
             <div>
             Add to cart for

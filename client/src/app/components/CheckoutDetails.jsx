@@ -1,5 +1,12 @@
+
+
+
 const CheckoutDetails = () => {
-  return <div>CheckoutDetails</div>;
+  return (
+    <div>
+      checkout details
+    </div>
+  )
 };
 
 export default CheckoutDetails;

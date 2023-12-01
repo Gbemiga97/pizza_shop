@@ -14,7 +14,7 @@ ReactModal.setAppElement('body')
 
 //modal styles
 const modalStyles = {
-  overLay: {
+  overlay: {
     backgroundColor: 'rgba(0,0,0,0.5)'
   }
 }

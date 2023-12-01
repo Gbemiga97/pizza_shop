@@ -1,10 +1,14 @@
+"use client"
+
 import { BiPlus, BiMinus } from 'react-icons/bi'
 import { IoCloseOutline } from 'react-icons/io5';
 import Image from 'next/image';
+import { useCartContext } from '../context/CartContext';
 
 const CartItem = ({pizza}) => {
 
-  const {image, name, crust, size, price, amount} = pizza
+  const { removeItem,  increaseAmount, decreaseAmount } = useCartContext()
+  const {id, image, name, crust, size, price, amount, additionalTopping} = pizza
 
   return (
     <div className='select-none '>
@@ -33,14 +37,18 @@ const CartItem = ({pizza}) => {
             {/* quantity controls */}
             <div className='flex items-center gap-x-1'>
               {/*  decrease quantity */}
-              <div className='w-[1.2rem] h-[1.2rem] flex justify-center items-center cursor-pointer text-white
+              <div
+              onClick={() => decreaseAmount(id, price)}
+              className='w-[1.2rem] h-[1.2rem] flex justify-center items-center cursor-pointer text-white
               rounded-full gradient'>
                 <BiMinus />
               </div>
               <div className='font-semibold flex flex-1 max-w-[1.8rem] justify-center items-center text-sm'>
-                1</div>
+                {amount}</div>
               {/* increase quantity */}
-              <div className='w-[1.2rem] h-[1.2rem] flex justify-center items-center cursor-pointer text-white
+              <div
+                onClick={() => increaseAmount(id, price)}
+              className='w-[1.2rem] h-[1.2rem] flex justify-center items-center cursor-pointer text-white
               rounded-full gradient'>
                 <BiPlus />
               </div>
@@ -49,7 +57,9 @@ const CartItem = ({pizza}) => {
         </div>
         <div className='flex flex-col justify-between'>
           {/* remove item */}
-          <div className='text-2xl flex justify-center items-center self-end
+          <div
+          onClick={() => removeItem(id, price, crust)}
+          className='text-2xl flex justify-center items-center self-end
           cursor-pointer hove:scale-110 duration-100 transition-all text-orange'>
             <IoCloseOutline />
           </div>
@@ -62,7 +72,20 @@ const CartItem = ({pizza}) => {
         </div>
       </div>
       {/* toppings */}
-      <div>toppings</div>
+      <div className='flex flex-wrap items-center gap-3 p-6 border-b border-black/10'>
+        <p>
+          Toppings: {additionalTopping.length === 0 && 'None'}
+        </p>
+        {
+          additionalTopping.map(({name}, i) => (
+            <div
+            className='capitalize text-sm gradient font-medium px-3 py-1 rounded-full leading-none'
+            key={i}>
+              {name}
+            </div>
+          ))
+        }
+      </div>
     </div>
   )
 };
