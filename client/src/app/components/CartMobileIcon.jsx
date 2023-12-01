@@ -6,7 +6,7 @@ import { useCartContext } from '../context/CartContext';
 
 const CartMobileIcon = () => {
 
-  const {setIsOpen} = useCartContext()
+  const {setIsOpen, itemAmount} = useCartContext()
 
   return (
     <div
@@ -16,7 +16,7 @@ const CartMobileIcon = () => {
       <BsHandbagFill className='text-4xl' />
       <span className='absolute text-white bottom-3 right-4 gradient w-5 h-5 flex
       justify-center items-center rounded-full font-robotoCondensed text-[13px]'>
-        3</span>
+        {itemAmount}</span>
     </div>
   )
 };

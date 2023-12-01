@@ -33,10 +33,10 @@ const CartContextProvider = ({children}) => {
     //update total state 
     useEffect(() => {
         const totalPrice = cart.reduce((a, c) => {
-          return  a + c.price;
+          return  a + Number(c.price) * c.amount;
         }, 0)
         setCartTotal(totalPrice)
-    })
+    }, [cart])
 
     //add to cart
     const addToCart = (id, image, name, price, additionalTopping, size, crust) => {
@@ -126,6 +126,7 @@ const CartContextProvider = ({children}) => {
         setIsOpen,
         addToCart,
         cart,
+        setCart,
         removeItem,
         increaseAmount,
         decreaseAmount,

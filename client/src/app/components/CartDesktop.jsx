@@ -14,7 +14,7 @@ const CartDesktop = () => {
 
   return (
     <div className={`${isOpen ? 'left-0' : '-left-full'} bg-white fixed duration-300
-    top-0 bottom-0 w-[500px]  shadow-2xl lg:flex flex-col transition-all `}>
+    top-0 bottom-0 w-[500px]  shadow-2xl hidden lg:flex flex-col transition-all `}>
       {/* cart top */}
       <CartTop />
       <div className={`${cart.length >= 3 && 'scrollbar-track-black/10 scrollbar-thumb-secondary'}

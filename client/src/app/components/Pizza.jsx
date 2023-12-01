@@ -20,7 +20,7 @@ const modalStyles = {
 }
 
 
-const Pizza = ({pizza}) => {
+const  Pizza = ({pizza}) => {
 const { name, image, description, priceSm, } = pizza
 
 const [modal, setModal] = useState(false)

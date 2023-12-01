@@ -5,14 +5,14 @@ import { useCartContext } from '../context/CartContext';
 
 const CartTop = () => {
 
-  const {setIsOpen} = useCartContext()
+  const {setIsOpen, itemAmount} = useCartContext()
 
   return (
     <div className='w-full h-20 border-b flex items-center justify-between px-10'>
 
       {/* shopping bag */}
     <p className='font-semibold'>
-      Shopping Bag(3)</p>
+      Shopping Bag({itemAmount})</p>
       {/* close icons */}
       <div 
       className='cursor-pointer group'

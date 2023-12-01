@@ -9,7 +9,7 @@ import CheckoutDetails from './CheckoutDetails';
 
 const  CartBottom = () => {
 
-  const { setIsOpen, cart } = useCartContext()
+  const { setIsOpen, cart, cartTotal } = useCartContext()
 
   //modal state
   const [modal, setModal] = useState(false)
@@ -39,7 +39,7 @@ const  CartBottom = () => {
             {/* total */}
             <div className='flex items-center justify-between mb-6 text-lg font-semibold font-robotoCondensed'>
               <p>Total:</p>
-              <p>$320</p>
+              <p>${parseFloat(cartTotal).toFixed(2)}</p>
             </div>
             {/* btn */}
             <div className='flex flex-col gap-y-3'>
@@ -76,7 +76,7 @@ const  CartBottom = () => {
             className='absolute z-30 right-2 top-2 hover:scale-110 duration-200 cursor-pointer'>
               <IoCloseOutline className='text-4xl text-orange' />
             </div>
-            <CheckoutDetails />
+            <CheckoutDetails setModal={setModal} />
           </ReactModal>
         )
       }
